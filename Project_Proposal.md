@@ -9,7 +9,7 @@ being attacked by enemies, fall in a pit, other stage hazards
 # Game features
 Menu screen, multiple items you can pick up and use in different ways, ai controlled enemies(ai is a strong word here), multiple controllers acepted(hopefully)
 # Intended Items
-Keys - blue, green, and red
+Keys - blue, green, and red\n
 Hookshot type item for passing over pits
 Ship parts (McGuffin)
 Boxes - can be placed as a wall or in a pit as a bridge
