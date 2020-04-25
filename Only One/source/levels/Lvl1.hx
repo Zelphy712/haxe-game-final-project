@@ -10,7 +10,7 @@ import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.tile.FlxTilemap;
 
 class Lvl1 extends FlxState{
-    private var player:Player;
+    public var player:Player;
 	private var levelLoader:FlxOgmo3Loader;
     private var map:FlxTilemap;
     private var doors:FlxTypedGroup<Door>;
@@ -20,12 +20,11 @@ class Lvl1 extends FlxState{
 
         
         setUpLevel();
-        player = new Player(64,64);
+        player = new Player();
         add(player);
         add(map);
-
-        doors.add(new Door(96,96,types.KeyColor.RED));
-        add(doors);
+        // doors.add(new Door(96,96,types.KeyColor.RED));
+        add(new Door(96,96,types.KeyColor.RED));
         
     }
 
@@ -40,21 +39,24 @@ class Lvl1 extends FlxState{
 		map = levelLoader.loadTilemap(AssetPaths.walls__png, "Walls");
         map.setTileProperties(1, FlxObject.ANY);
 		
-		// levelLoader.loadEntities(placeEntities, "entities");
+		levelLoader.loadEntities(placeEntities, "Entities");
     }
     
-    // private function placeEntities(entityData:EntityData):Void {
-	// 	if (entityData.name == "Player") {
-	// 		player.x = entityData.x - entityData.originX + Player.OFFSET_X;
-	// 		player.y = entityData.y - entityData.originY + Player.OFFSET_Y;
-	// 	}
-	// }
+    private function placeEntities(entityData:EntityData):Void {
+        trace(entityData);
+		if (entityData.name == "Player") {
+			player.x = entityData.x - entityData.originX;// + Player.OFFSET_X;
+			player.y = entityData.y - entityData.originY;// + Player.OFFSET_Y;
+		}
+	}
 
     public override function update(elapsed:Float){
-        FlxG.collide(player,map);
-        FlxG.collide(player,doors);
         super.update(elapsed);
+        FlxG.collide(player,map);
+        // FlxG.collide(player,doors);
     }
+
+    
 
 
 }

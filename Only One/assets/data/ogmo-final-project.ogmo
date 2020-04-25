@@ -25,6 +25,14 @@
       "exportMode": 0,
       "arrayMode": 0,
       "defaultTileset": "Basic Walls"
+    },
+    {
+      "definition": "entity",
+      "name": "Entities",
+      "gridSize": {"x": 32, "y": 32},
+      "exportID": "82918063",
+      "requiredTags": [],
+      "excludedTags": []
     }
   ],
   "entities": [
@@ -49,7 +57,7 @@
       "color": "#ff0000ff",
       "tileX": false,
       "tileY": false,
-      "tileSize": {"x": 16, "y": 16},
+      "tileSize": {"x": 32, "y": 32},
       "resizeableX": false,
       "resizeableY": false,
       "rotatable": false,
@@ -66,6 +74,6 @@
     }
   ],
   "tilesets": [
-    {"label": "Basic Walls", "path": "../images/tilesets/walls.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAgBAMAAABnUW7GAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAwUExURQAAADL//0b//2H//62trcHBwdjY2P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANQbzeAAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADFSURBVEjH7ZXBDcIwDEW5MQAj9MAkUTdwRvAVhNO/PnGaBBQJpJJ/5F+iKtKTa/u1JwwRYN2AkNRPi7fh/jw8j/cfge3EwfyBDjRAqcD1cd24wMtCBi5s4J38yvSh8PfQlAz08ID5K5NjkQbcSwx9OPPApCla7MbMAyESwssYAjBpLrAbQwBKGUUzZh6YC9TSQ9ZQxNclgLmH5W/XjJkGvrns4QGbMTRgM4YHrMbwgNUYInA3hgiUX1r4tYem1B5WY44FeAIE2ISLSrvTRAAAAABJRU5ErkJggg==", "tileWidth": 32, "tileHeight": 32, "tileSeparationX": 0, "tileSeparationY": 0}
+    {"label": "Basic Walls", "path": "../images/tilesets/walls.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAgCAYAAACVf3P1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAObSURBVHhe7ZpNbtswEIXVwihyAAM+gg/Qfbbd5wg9WG+Q7LN09l10Fx/BQA4QFAFcP1nPeZkMKVGuLdrkBxDiz1D24sOQlNRsJ2a1Wm2fn5+71jv39/ddbRscx1zg3SM2X+c2TTNpwV9o/8iEdP9jEr7ufvyieXp6ahaLRbNcLruefu7u7pqXl5d27knZ/u0qebPzoKudn4sX8GRAHpYxXIh8U1MFDPHl276kotKOmV8YVUAKE8tYHNPYWB/xxry+gslSwIeHh3afRrC/W6/XXes/w0yHYuVAYRZDHTAW2L5YAV584WQnoMr3c1d+tLUTS0hUDMqhEvJKNK6PoXGFke0S/L27Aog4CRSMmcti+9FmIdquEn4iWwHn3TULKKISkikUZ8WstGQr4OOu/NlXm1/d9WKAdCob2iygynggOwGx/8M+EPzeFYgIsP9Ledh8FEMFoVDAi/f6VMRKnhlQJQRnl28sKpZmO48qYUu2SzAlPJt8EAVFMxT7KJFtD2XMnELIVkAACc8mH/AymMoIKGifVDYexOILZXIBb29vm81mk/SMD5lxPp+3c49GRVFUFjsGVCorlndPrXOOnVcgWWTAFAmHyIcYPswG0YfYEMMKFhLIxrEvNOah9w7FFEQ2S7AnIT6X0k+mUuUb9SbFky+GzWJ9Wa2K94Gs9oAqIb/z43d7qcvuUW9SQoKoXKh7ssXkquJ9IrtDCCXkR6bIZpAwdc931JuUviymWKlS5lbyE5CZT0+/lFCX4z5Gv0mBUD2Z6ubm5j3Gy4Sx+V58wWQloJUPyy73bUMlRBzmgVO9SXl9fd1XPFl75D1QJWzJRkBPPsiE9jESgkHy9QkRGh8j0lBJCyALAa18MVIl7JUPAlEiKxPH2C/izGazz/EWnQv64gtkcgFT5CMpEg66L5dSFCsNMVnr7e1tXzH9B6x4bGu89zuFkd0hJBV9dDMUZMbDqdoKxLYKg0KJ2I9rSCbWOZdF8foK5OIFBCkSfpAvhIphZQIqG9B+jbd4fYVzFQICT0Is0bpMD5KPqHCK1wfpGB+aV3G5GgGBSsi9JfeKSfIplEmznkpms6G2UbfjgP3eWGFclYCAEvJgwwNLVD4VwitE60pIRu3XAlTigrk6AZn59PQ76NRMIVQK1lUsTyatA60Tvb/+RuFclYBWPj4HBEEJY7IoKk/fOFApbWzlwNUI6MnH54BRCVUaj9g4x+y4tkNzKzua5h99j3W6BwzYcgAAAABJRU5ErkJggg==", "tileWidth": 32, "tileHeight": 32, "tileSeparationX": 0, "tileSeparationY": 0}
   ]
 }
