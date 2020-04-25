@@ -1,0 +1,71 @@
+{
+  "name": "CSC303-final-project",
+  "ogmoVersion": "3.3.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 32, "y": 32},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 128, "y": 128},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "tile",
+      "name": "Walls",
+      "gridSize": {"x": 32, "y": 32},
+      "exportID": "60027284",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "Basic Walls"
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "76475461",
+      "name": "Player",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 3,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    }
+  ],
+  "tilesets": [
+    {"label": "Basic Walls", "path": "../images/tilesets/walls.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAgBAMAAABnUW7GAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAwUExURQAAADL//0b//2H//62trcHBwdjY2P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANQbzeAAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADFSURBVEjH7ZXBDcIwDEW5MQAj9MAkUTdwRvAVhNO/PnGaBBQJpJJ/5F+iKtKTa/u1JwwRYN2AkNRPi7fh/jw8j/cfge3EwfyBDjRAqcD1cd24wMtCBi5s4J38yvSh8PfQlAz08ID5K5NjkQbcSwx9OPPApCla7MbMAyESwssYAjBpLrAbQwBKGUUzZh6YC9TSQ9ZQxNclgLmH5W/XjJkGvrns4QGbMTRgM4YHrMbwgNUYInA3hgiUX1r4tYem1B5WY44FeAIE2ISLSrvTRAAAAABJRU5ErkJggg==", "tileWidth": 32, "tileHeight": 32, "tileSeparationX": 0, "tileSeparationY": 0}
+  ]
+}
