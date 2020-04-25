@@ -20,7 +20,7 @@ class Lvl1 extends FlxState{
 
         
         setUpLevel();
-        player = new Player();
+        
         add(player);
         add(map);
         // doors.add(new Door(96,96,types.KeyColor.RED));
@@ -30,7 +30,8 @@ class Lvl1 extends FlxState{
 
 
     private function setUpLevel():Void {
-		levelLoader = new FlxOgmo3Loader(AssetPaths.ogmo_final_project__ogmo, 
+		player = new Player();
+        levelLoader = new FlxOgmo3Loader(AssetPaths.ogmo_final_project__ogmo, 
             AssetPaths.testLevel__json);
             
 		FlxG.worldBounds.setSize(
@@ -38,7 +39,7 @@ class Lvl1 extends FlxState{
             
 		map = levelLoader.loadTilemap(AssetPaths.walls__png, "Walls");
         map.setTileProperties(1, FlxObject.ANY);
-		
+
 		levelLoader.loadEntities(placeEntities, "Entities");
     }
     
