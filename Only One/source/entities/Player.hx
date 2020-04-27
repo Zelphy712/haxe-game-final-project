@@ -33,10 +33,8 @@ class Player extends FlxSprite {
     
     var moving:Bool;
     var lerp:Float;
-    var oldX:Float;
-    var oldY:Float;
-    var newX:Float;
-    var newY:Float;
+    var oldPos:FlxVector;
+    var newPos:FlxVector;
     
 
 
@@ -52,6 +50,8 @@ class Player extends FlxSprite {
     }
 
     public function loadMap(mapName){
+        //TODO:set tile size from json also
+
         file = Assets.getText(mapName);
         mapJSON = haxe.Json.parse(file);
         for(layer in cast (mapJSON.get('layers'),Array<Dynamic>)) {
@@ -65,6 +65,8 @@ class Player extends FlxSprite {
                     //set playerPos with it's x and y
                     if(ent.name = "Player"){
                         playerPos = new FlxVector(ent.x/TILE_SIZE,ent.y/TILE_SIZE);
+                        trace("playerPos: ", playerPos);
+                        oldPos = newPos = playerPos;
                     }
                 }
                 
@@ -107,9 +109,38 @@ class Player extends FlxSprite {
 
     public function allowedMove(moveDirection):Bool{
         //check for block in position, array out of bound, etc.
-        //set newX and newY from moveDirection if applicable
-        //for now just returnig true to work on other things
-        return true;
+        switch(moveDirection){
+            case(NORTH):
+            {
+                if(((playerPos.x+playerPos.y*mapSize.x) - mapSize.x >= 0)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) - mapSize.x,Int)] <= 0)){
+                    newPos.add(0,-1);
+                    return true;
+                }
+            }
+            case(EAST):
+            {
+                if((playerPos.x + 1 < mapSize.x)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) + 1,Int)] <= 0)){
+                    newPos.add(1,0);
+                    return true;
+                }
+            }
+            case(WEST):
+            {
+                if(((playerPos.x) - 1 >=0 )/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) - 1,Int)] <= 0)){
+                    newPos.add(-1,0);
+                    return true;
+                }
+            }
+            case(SOUTH):
+            {
+                if(((playerPos.x+playerPos.y*mapSize.x) + mapSize.x < (mapSize.y+1) * mapSize.x)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) + mapSize.x,Int)] <= 0)){
+                    newPos.add(0,1);
+                    return true;
+                }
+            }
+            case(NONE):
+            return false;
+        }
     }
 
     public override function update(elapsed:Float){
@@ -124,15 +155,20 @@ class Player extends FlxSprite {
                 }else{
                     looking = moveDirection;
                     moveDirection = types.Direction.NONE;
+                    moving = false;
                 }
             }
-        }else if(lerp > 1){ 
+        }
+        if(lerp > 1){
             moving = false;
             lerp = 0;
-        }else{
-            FlxMath.lerp(oldX,newX,lerp);
-            FlxMath.lerp(oldY,newY,lerp);
-            lerp +=.1;
+            playerPos = new FlxVector(x/TILE_SIZE,y/TILE_SIZE);
+            oldPos = newPos;
+        }
+        if(moving){
+            x = FlxMath.lerp(oldPos.x*TILE_SIZE,newPos.x*TILE_SIZE,lerp);
+            y = FlxMath.lerp(oldPos.y*TILE_SIZE,newPos.y*TILE_SIZE,lerp);
+            lerp +=.05;
         }
 
         super.update(elapsed);
