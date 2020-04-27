@@ -30,7 +30,7 @@ class Lvl1 extends FlxState{
 
 
     private function setUpLevel():Void {
-		player = new Player();
+		
         levelLoader = new FlxOgmo3Loader(AssetPaths.ogmo_final_project__ogmo, 
             AssetPaths.testLevel__json);
             
@@ -44,7 +44,8 @@ class Lvl1 extends FlxState{
     }
     
     private function placeEntities(entityData:EntityData):Void {
-        trace(entityData);
+        player = new Player(0,0,AssetPaths.testLevel__json);
+        // trace(entityData);
 		if (entityData.name == "Player") {
 			player.x = entityData.x - entityData.originX;// + Player.OFFSET_X;
 			player.y = entityData.y - entityData.originY;// + Player.OFFSET_Y;
@@ -53,7 +54,7 @@ class Lvl1 extends FlxState{
 
     public override function update(elapsed:Float){
         super.update(elapsed);
-        FlxG.collide(player,map);
+        // FlxG.collide(player,map);
         // FlxG.collide(player,doors);
     }
 
