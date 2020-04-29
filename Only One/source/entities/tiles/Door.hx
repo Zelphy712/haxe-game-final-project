@@ -18,12 +18,16 @@ class Door extends FlxSprite{
                 makeGraphic(32,32,FlxColor.GREEN);
             case BLUE:
                 makeGraphic(32,32,FlxColor.BLUE);
-            
         }
     }
 
     public override function update(elapsed:Float){
         super.update(elapsed);
+    }
+
+    public function open():Bool{
+        trace("OPENED!");
+        return true;
     }
 
 }

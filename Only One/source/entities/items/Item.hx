@@ -2,6 +2,8 @@ package entities.items;
 
 interface Item {
     //include a sprite for ui later
+    public var type:String;
     public var consumable:Bool;
-    public function use(player:Player):Void;
+    //bool represents if the use was successful/item was consumed
+    public function use(player:Player):Bool;
 }

@@ -1,5 +1,7 @@
 package entities;
 
+import flixel.FlxObject;
+import flixel.group.FlxGroup;
 import types.Direction;
 import flixel.math.FlxMath;
 import flixel.math.FlxVector;
@@ -12,31 +14,28 @@ import flixel.FlxSprite;
 class Player extends FlxSprite {
     //change movement so that you move only if you were already looking in the direction you wan to move, otherwise turn to face that way.
 
-
-    static inline var TILE_SIZE:Int = 32;
-
-    
-    static inline var MOVEMENT_SPEED:Int = 2;
- 
-    
-    public var moveToNextTile:Bool;
-
+    //General use variables
+    public var tileSize:Int = 32; 
     var moveDirection:types.Direction;
-    var looking:types.Direction;
+    public var looking:types.Direction;
 
-
+    //Map loading
     var file:String;
     var mapJSON:DynamicAccess<Dynamic>;
-    var map:Array<Int>;
-    var mapSize:FlxVector;
-    var playerPos:FlxVector;
+    public var map:Array<Int>;
+    public var mapSize:FlxVector;
+    public var playerPos:FlxVector;
     
+    //Movement variables
     var moving:Bool;
     var lerp:Float;
     var oldPos:FlxVector;
     var newPos:FlxVector;
-    
 
+    //Item variables
+    var item:entities.items.Item;
+    public var levelEntities:FlxGroup;
+    public var facingCollider:FlxObject;
 
 
     public override function new(?x:Float=0, ?y:Float=0,?mapName:String=""){
@@ -47,16 +46,17 @@ class Player extends FlxSprite {
         lerp = 0;
         moveDirection = types.Direction.NONE;
         looking = types.Direction.NORTH;
+        item = new entities.items.Key(types.KeyColor.RED);
+        facingCollider = new FlxObject((x - tileSize), (y), 32, 32);
     }
 
     public function loadMap(mapName){
-        //TODO:set tile size from json also
-
         file = Assets.getText(mapName);
         mapJSON = haxe.Json.parse(file);
         for(layer in cast (mapJSON.get('layers'),Array<Dynamic>)) {
             if(layer.name == "Walls"){
                 map = layer.data;
+                tileSize = layer.gridCellWidth;
                 mapSize = new FlxVector(layer.gridCellsX, layer.gridCellsY);
             }
             if(layer.name == "Entities"){
@@ -64,7 +64,7 @@ class Player extends FlxSprite {
                 for(ent in cast(layer.entities,Array<Dynamic>)){
                     //set playerPos with it's x and y
                     if(ent.name = "Player"){
-                        playerPos = new FlxVector(ent.x/TILE_SIZE,ent.y/TILE_SIZE);
+                        playerPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
                         trace("playerPos: ", playerPos);
                         oldPos = newPos = playerPos;
                     }
@@ -115,6 +115,8 @@ class Player extends FlxSprite {
                 if(((playerPos.x+playerPos.y*mapSize.x) - mapSize.x >= 0)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) - mapSize.x,Int)] <= 0)){
                     newPos.add(0,-1);
                     return true;
+                }else{
+                    return false;
                 }
             }
             case(EAST):
@@ -122,6 +124,8 @@ class Player extends FlxSprite {
                 if((playerPos.x + 1 < mapSize.x)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) + 1,Int)] <= 0)){
                     newPos.add(1,0);
                     return true;
+                }else{
+                    return false;
                 }
             }
             case(WEST):
@@ -129,6 +133,8 @@ class Player extends FlxSprite {
                 if(((playerPos.x) - 1 >=0 )/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) - 1,Int)] <= 0)){
                     newPos.add(-1,0);
                     return true;
+                }else{
+                    return false;
                 }
             }
             case(SOUTH):
@@ -136,16 +142,39 @@ class Player extends FlxSprite {
                 if(((playerPos.x+playerPos.y*mapSize.x) + mapSize.x < (mapSize.y+1) * mapSize.x)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) + mapSize.x,Int)] <= 0)){
                     newPos.add(0,1);
                     return true;
+                }else{
+                    return false;
                 }
             }
             case(NONE):
+                return false;
+        }
+    }
+
+    public function useItem():Bool{
+        //Bool is if use was successful
+        if(item.type == "Null"){
             return false;
         }
+        if(item.consumable){
+            if(item.use(this)){
+                item = new entities.items.NullItem();
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return item.use(this);
+        }
+        return false;
     }
 
     public override function update(elapsed:Float){
 
         if(!moving){
+            if(FlxG.keys.justPressed.E){
+                useItem();
+            }
             moveDirection = getMovementInput();
             if(moveDirection != types.Direction.NONE){
                 if(moveDirection == looking){
@@ -162,14 +191,15 @@ class Player extends FlxSprite {
         if(lerp > 1){
             moving = false;
             lerp = 0;
-            playerPos = new FlxVector(x/TILE_SIZE,y/TILE_SIZE);
+            playerPos = new FlxVector(x/tileSize,y/tileSize);
             oldPos = newPos;
         }
         if(moving){
-            x = FlxMath.lerp(oldPos.x*TILE_SIZE,newPos.x*TILE_SIZE,lerp);
-            y = FlxMath.lerp(oldPos.y*TILE_SIZE,newPos.y*TILE_SIZE,lerp);
+            x = FlxMath.lerp(oldPos.x*tileSize,newPos.x*tileSize,lerp);
+            y = FlxMath.lerp(oldPos.y*tileSize,newPos.y*tileSize,lerp);
             lerp +=.05;
         }
+
 
         super.update(elapsed);
     }
