@@ -23,6 +23,8 @@ class Key implements Item {
             case NORTH:{
                     if(player.map[cast((player.playerPos.x+player.playerPos.y*player.mapSize.x) - player.mapSize.x,Int)] <= 0){
                         trace("no wall");
+                        FlxG.overlap(player.facingCollider,player.levelEntities,openDoor);
+                        return used;
                     }else{
                         trace("Wall");
                     }
@@ -30,6 +32,8 @@ class Key implements Item {
             case SOUTH:{
                     if(player.map[cast((player.playerPos.x+player.playerPos.y*player.mapSize.x) + player.mapSize.x,Int)] <= 0){
                         trace("no wall");
+                        FlxG.overlap(player.facingCollider,player.levelEntities,openDoor);
+                    return used;
                     }else{
                         trace("Wall");
                     }
@@ -37,6 +41,8 @@ class Key implements Item {
             case EAST:{
                 if(player.map[cast((player.playerPos.x+player.playerPos.y*player.mapSize.x) + 1,Int)] <= 0){
                     trace("no wall");
+                    FlxG.overlap(player.facingCollider,player.levelEntities,openDoor);
+                    return used;
                 }else{
                     trace("Wall");
                 }
@@ -44,8 +50,6 @@ class Key implements Item {
             case WEST:
                 if(player.map[cast((player.playerPos.x+player.playerPos.y*player.mapSize.x) - 1,Int)] <= 0){
                     trace("no wall");
-                    // trace("coll",collider);
-                    // trace("doors",player.levelEntities.members);
                     FlxG.overlap(player.facingCollider,player.levelEntities,openDoor);
                     return used;
                 }else{
@@ -62,10 +66,14 @@ class Key implements Item {
     }
 
     public function openDoor(key,door):Void{
-        trace("Key:",key);
-        trace("Door:",door);
+        // trace("Key:",cast(key,entities.items.Key));
+        trace("Key:",this);
+        trace("Door:",cast(door,entities.tiles.Door));
+
         var door = cast(door,entities.tiles.Door);
-        used = door.open();
+        if(door.colour == color){
+            used = door.open();
+        }
     }
 
 

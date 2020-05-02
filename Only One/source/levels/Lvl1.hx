@@ -1,5 +1,6 @@
 package levels;
 
+import entities.tiles.ItemBlock;
 import entities.tiles.Door;
 import flixel.group.FlxGroup;
 import flixel.FlxObject;
@@ -24,11 +25,12 @@ class Lvl1 extends FlxState{
         add(player);
         add(map);
         
-        var door = new Door(96,96,types.KeyColor.RED);
-        entities.add(door);
-        add(door);
-        trace(entities.members);
-        player.levelEntities = entities;
+        // var door = new Door(96,96,types.KeyColor.RED);
+        // entities.add(door);
+        // add(door);
+        // trace(entities.members);
+        // player.levelEntities = entities;
+        add(player.facingCollider);
     }
 
 
@@ -51,8 +53,23 @@ class Lvl1 extends FlxState{
         // trace(entityData);
 		if (entityData.name == "Player") {
 			player.x = entityData.x - entityData.originX;// + Player.OFFSET_X;
-			player.y = entityData.y - entityData.originY;// + Player.OFFSET_Y;
-		}
+            
+            player.y = entityData.y - entityData.originY;// + Player.OFFSET_Y;
+		}else if(entityData.name == "redDoor"){
+            entities.add(new Door(entityData.x-entityData.originX,entityData.y-entityData.originY,types.KeyColor.RED));
+        }else if(entityData.name == "blueDoor"){
+            entities.add(new Door(entityData.x-entityData.originX,entityData.y-entityData.originY,types.KeyColor.BLUE));
+        }else if(entityData.name == "greenDoor"){
+            entities.add(new Door(entityData.x-entityData.originX,entityData.y-entityData.originY,types.KeyColor.GREEN));
+        }else if(entityData.name == "redKey"){
+            entities.add(new ItemBlock(entityData.x-entityData.originX,entityData.y-entityData.originY,new entities.items.Key(types.KeyColor.RED)));
+        }else if(entityData.name == "blueKey"){
+            entities.add(new ItemBlock(entityData.x-entityData.originX,entityData.y-entityData.originY,new entities.items.Key(types.KeyColor.BLUE)));
+        }else if(entityData.name == "greenKey"){
+            entities.add(new ItemBlock(entityData.x-entityData.originX,entityData.y-entityData.originY,new entities.items.Key(types.KeyColor.GREEN)));
+        }
+        add(entities);
+        player.levelEntities = entities;
 	}
 
     public override function update(elapsed:Float){

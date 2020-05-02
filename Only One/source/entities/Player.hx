@@ -31,6 +31,7 @@ class Player extends FlxSprite {
     var lerp:Float;
     var oldPos:FlxVector;
     var newPos:FlxVector;
+    public var entityBlocking:Bool;
 
     //Item variables
     var item:entities.items.Item;
@@ -47,7 +48,8 @@ class Player extends FlxSprite {
         moveDirection = types.Direction.NONE;
         looking = types.Direction.NORTH;
         item = new entities.items.Key(types.KeyColor.RED);
-        facingCollider = new FlxObject((x - tileSize), (y), 32, 32);
+        facingCollider = new FlxObject((x - tileSize), y, 32, 32);
+        entityBlocking = false;
     }
 
     public function loadMap(mapName){
@@ -65,7 +67,7 @@ class Player extends FlxSprite {
                     //set playerPos with it's x and y
                     if(ent.name = "Player"){
                         playerPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
-                        trace("playerPos: ", playerPos);
+                        // trace("playerPos: ", playerPos);
                         oldPos = newPos = playerPos;
                     }
                 }
@@ -107,12 +109,19 @@ class Player extends FlxSprite {
         
     }
 
+    public function setBlocked(facingCollider,entity):Void{
+        var tile = cast(entity,entities.tiles.Tile);
+        entityBlocking = tile.blocking;
+    }
+
     public function allowedMove(moveDirection):Bool{
+        FlxG.overlap(facingCollider,levelEntities,setBlocked);
+
         //check for block in position, array out of bound, etc.
         switch(moveDirection){
             case(NORTH):
             {
-                if(((playerPos.x+playerPos.y*mapSize.x) - mapSize.x >= 0)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) - mapSize.x,Int)] <= 0)){
+                if(((playerPos.x+playerPos.y*mapSize.x) - mapSize.x >= 0) && (map[cast((playerPos.x+playerPos.y*mapSize.x) - mapSize.x,Int)] <= 0) && !entityBlocking){
                     newPos.add(0,-1);
                     return true;
                 }else{
@@ -121,7 +130,7 @@ class Player extends FlxSprite {
             }
             case(EAST):
             {
-                if((playerPos.x + 1 < mapSize.x)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) + 1,Int)] <= 0)){
+                if((playerPos.x + 1 < mapSize.x) && (map[cast((playerPos.x+playerPos.y*mapSize.x) + 1,Int)] <= 0) && !entityBlocking){
                     newPos.add(1,0);
                     return true;
                 }else{
@@ -130,7 +139,7 @@ class Player extends FlxSprite {
             }
             case(WEST):
             {
-                if(((playerPos.x) - 1 >=0 )/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) - 1,Int)] <= 0)){
+                if(((playerPos.x) - 1 >=0 ) && (map[cast((playerPos.x+playerPos.y*mapSize.x) - 1,Int)] <= 0) && !entityBlocking){
                     newPos.add(-1,0);
                     return true;
                 }else{
@@ -139,7 +148,7 @@ class Player extends FlxSprite {
             }
             case(SOUTH):
             {
-                if(((playerPos.x+playerPos.y*mapSize.x) + mapSize.x < (mapSize.y+1) * mapSize.x)/*won't move off map*/ && (map[cast((playerPos.x+playerPos.y*mapSize.x) + mapSize.x,Int)] <= 0)){
+                if(((playerPos.x+playerPos.y*mapSize.x) + mapSize.x < (mapSize.y+1) * mapSize.x) && (map[cast((playerPos.x+playerPos.y*mapSize.x) + mapSize.x,Int)] <= 0) && !entityBlocking){
                     newPos.add(0,1);
                     return true;
                 }else{
@@ -159,6 +168,7 @@ class Player extends FlxSprite {
         if(item.consumable){
             if(item.use(this)){
                 item = new entities.items.NullItem();
+                // trace(cast(item,entities.items.Item));
                 return true;
             }else{
                 return false;
@@ -169,11 +179,40 @@ class Player extends FlxSprite {
         return false;
     }
 
+    public function pickupItem(facingCollider,ItemBlock):Void{
+        trace("checking item");
+        var targetTile = cast(ItemBlock,entities.tiles.Tile);
+        if(targetTile.type == "Item"){
+            var targetItem = cast(ItemBlock,entities.tiles.ItemBlock);//This may all be a bit excessive but im in a very explicit mood
+            if(targetItem.itemType != this.item.type){
+                var tempItem = targetItem.item;
+                targetItem.type = this.item.type;
+                targetItem.item = this.item;
+                this.item = tempItem;
+                trace("Picked up:",this.item);
+            }
+        }
+        
+    }
+
     public override function update(elapsed:Float){
 
+        this.entityBlocking = false;
+
+        //handling input
         if(!moving){
             if(FlxG.keys.justPressed.E){
                 useItem();
+            }
+            if(FlxG.keys.justPressed.Q){
+                FlxG.overlap(facingCollider,levelEntities,pickupItem);
+            }
+            //Testing color for locks
+            if(FlxG.keys.justPressed.R){
+                item = new entities.items.Key(types.KeyColor.RED);
+            }
+            if(FlxG.keys.justPressed.B){
+                item = new entities.items.Key(types.KeyColor.BLUE);
             }
             moveDirection = getMovementInput();
             if(moveDirection != types.Direction.NONE){
@@ -188,18 +227,39 @@ class Player extends FlxSprite {
                 }
             }
         }
+        //stop lerping and reset movement
         if(lerp > 1){
             moving = false;
             lerp = 0;
             playerPos = new FlxVector(x/tileSize,y/tileSize);
             oldPos = newPos;
         }
+        //lerping for positions
         if(moving){
             x = FlxMath.lerp(oldPos.x*tileSize,newPos.x*tileSize,lerp);
             y = FlxMath.lerp(oldPos.y*tileSize,newPos.y*tileSize,lerp);
-            lerp +=.05;
+            lerp +=.1;
         }
 
+        //consider changing this to store a direction coef for UD and LR and updatse when looking changes
+        switch(looking){
+            case NORTH:
+                facingCollider.x = x;
+                facingCollider.y = y-tileSize;
+            case SOUTH:
+                facingCollider.x = x;
+                facingCollider.y = y+tileSize;
+            case EAST:
+                facingCollider.x = x+tileSize;
+                facingCollider.y = y;
+            case WEST:
+                facingCollider.x = x-tileSize;
+                facingCollider.y = y;
+            case NONE:
+                facingCollider.x = x;
+                facingCollider.y = y;
+        }
+        
 
         super.update(elapsed);
     }
