@@ -1,5 +1,6 @@
 package entities.tiles;
 
+import types.KeyColor;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
@@ -15,11 +16,40 @@ class ItemBlock extends FlxSprite implements entities.tiles.Tile{
         this.blocking = false;//maybe change to true later.
         this.item = item;
         itemType = item.type;
-        makeGraphic(32,32,FlxColor.BLUE);
+        // makeGraphic(32,32,FlxColor.BLUE);
+        switch(itemType){
+            case "Key":
+                var tempItem = cast(item,entities.items.Key);
+                if(tempItem.color == KeyColor.RED){
+                    loadGraphic(AssetPaths.redKey__png,false,32,32);
+                }else if(tempItem.color == KeyColor.GREEN){
+                    loadGraphic(AssetPaths.greenKey__png,false,32,32);
+                }else{
+                    loadGraphic(AssetPaths.blueKey__png,false,32,32);
+                }
+            default:
+                makeGraphic(32,32,FlxColor.BLUE);
+        }
     }
 
     public override function update(elapsed:Float){
         super.update(elapsed);
+    }
+
+    public function updateSprite(){
+        switch(itemType){
+            case "Key":
+                var tempItem = cast(item,entities.items.Key);
+                if(tempItem.color == KeyColor.RED){
+                    loadGraphic(AssetPaths.redKey__png,false,32,32);
+                }else if(tempItem.color == KeyColor.GREEN){
+                    loadGraphic(AssetPaths.greenKey__png,false,32,32);
+                }else{
+                    loadGraphic(AssetPaths.blueKey__png,false,32,32);
+                }
+            default:
+                makeGraphic(32,32,FlxColor.BLUE);
+        }
     }
 
     

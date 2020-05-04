@@ -78,8 +78,4 @@ class Lvl1 extends FlxState{
         // FlxG.collide(player,doors);
     }
 
-
-    
-
-
 }

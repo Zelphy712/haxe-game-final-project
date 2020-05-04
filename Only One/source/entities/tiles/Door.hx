@@ -15,11 +15,11 @@ class Door extends FlxSprite implements Tile{
         this.blocking = true;
         switch(colour){
             case RED:
-                makeGraphic(32,32,FlxColor.RED);
+                loadGraphic(AssetPaths.redDoor__png,false,32,32);
             case GREEN:
-                makeGraphic(32,32,FlxColor.GREEN);
+                loadGraphic(AssetPaths.greenDoor__png,false,32,32);
             case BLUE:
-                makeGraphic(32,32,FlxColor.BLUE);
+                loadGraphic(AssetPaths.blueDoor__png,false,32,32);
         }
     }
 

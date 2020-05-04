@@ -47,7 +47,7 @@ class Player extends FlxSprite {
         lerp = 0;
         moveDirection = types.Direction.NONE;
         looking = types.Direction.NORTH;
-        item = new entities.items.Key(types.KeyColor.RED);
+        item = new entities.items.NullItem();
         facingCollider = new FlxObject((x - tileSize), y, 32, 32);
         entityBlocking = false;
     }
@@ -68,11 +68,11 @@ class Player extends FlxSprite {
                     if(ent.name = "Player"){
                         playerPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
                         // trace("playerPos: ", playerPos);
-                        oldPos = newPos = playerPos;
+                        oldPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
+                        newPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
                     }
                 }
                 
-                //TODO:create a collection of of enitites for collision and pickup (maybe)
             }
         }
     }
@@ -180,16 +180,16 @@ class Player extends FlxSprite {
     }
 
     public function pickupItem(facingCollider,ItemBlock):Void{
-        trace("checking item");
         var targetTile = cast(ItemBlock,entities.tiles.Tile);
         if(targetTile.type == "Item"){
             var targetItem = cast(ItemBlock,entities.tiles.ItemBlock);//This may all be a bit excessive but im in a very explicit mood
-            if(targetItem.itemType != this.item.type){
+            if(targetItem.itemType != this.item.type||targetItem.itemType == "Key"||this.item.type == "Null"){
                 var tempItem = targetItem.item;
-                targetItem.type = this.item.type;
+                targetItem.itemType = this.item.type;
                 targetItem.item = this.item;
                 this.item = tempItem;
-                trace("Picked up:",this.item);
+                trace("Picked up:",this.item.type);
+                targetItem.updateSprite();
             }
         }
         
@@ -227,20 +227,20 @@ class Player extends FlxSprite {
                 }
             }
         }
-        //stop lerping and reset movement
-        if(lerp > 1){
-            moving = false;
-            lerp = 0;
-            playerPos = new FlxVector(x/tileSize,y/tileSize);
-            oldPos = newPos;
-        }
         //lerping for positions
         if(moving){
             x = FlxMath.lerp(oldPos.x*tileSize,newPos.x*tileSize,lerp);
             y = FlxMath.lerp(oldPos.y*tileSize,newPos.y*tileSize,lerp);
             lerp +=.1;
         }
-
+        //stop lerping and reset movement
+        if(lerp > 1){
+            moving = false;
+            lerp = 0;
+            playerPos = new FlxVector(x/tileSize,y/tileSize);
+            oldPos.x = newPos.x;
+            oldPos.y = newPos.y;
+        }
         //consider changing this to store a direction coef for UD and LR and updatse when looking changes
         switch(looking){
             case NORTH:
