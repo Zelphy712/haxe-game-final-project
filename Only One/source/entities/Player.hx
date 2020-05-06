@@ -42,7 +42,7 @@ class Player extends FlxSprite {
     public override function new(?x:Float=0, ?y:Float=0,?mapName:String=""){
         super(x,y);
         loadMap(mapName);
-        makeGraphic(32,32,FlxColor.MAGENTA);
+        // makeGraphic(32,32,FlxColor.MAGENTA);
         moving = false;
         lerp = 0;
         moveDirection = types.Direction.NONE;
@@ -50,6 +50,16 @@ class Player extends FlxSprite {
         item = new entities.items.NullItem();
         facingCollider = new FlxObject((x - tileSize), y, 32, 32);
         entityBlocking = false;
+        loadGraphic(AssetPaths.slimeTilesheet__png,true,32,32);
+        animation.add("standN",[0],0,false);
+        animation.add("standS",[0],0,false,false,true);
+        animation.add("standE",[2],0,false);
+        animation.add("standW",[2],0,false,true);
+        animation.add("moveN",[0,1],10,true);
+        animation.add("moveS",[0,1],10,true,false,true);
+        animation.add("moveE",[2,3],10,true);
+        animation.add("moveW",[2,3],10,true,true);
+        animation.play("standN");
     }
 
     public function loadMap(mapName){
@@ -65,7 +75,7 @@ class Player extends FlxSprite {
                 //loop through entities
                 for(ent in cast(layer.entities,Array<Dynamic>)){
                     //set playerPos with it's x and y
-                    if(ent.name = "Player"){
+                    if(ent.name == "Player"){
                         playerPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
                         // trace("playerPos: ", playerPos);
                         oldPos = new FlxVector(ent.x/tileSize,ent.y/tileSize);
@@ -183,12 +193,11 @@ class Player extends FlxSprite {
         var targetTile = cast(ItemBlock,entities.tiles.Tile);
         if(targetTile.type == "Item"){
             var targetItem = cast(ItemBlock,entities.tiles.ItemBlock);//This may all be a bit excessive but im in a very explicit mood
-            if(targetItem.itemType != this.item.type||targetItem.itemType == "Key"||this.item.type == "Null"){
+            if((targetItem.itemType != this.item.type||targetItem.itemType == "Key"||this.item.type == "Null")&&targetItem.itemType != "Null"){
                 var tempItem = targetItem.item;
                 targetItem.itemType = this.item.type;
                 targetItem.item = this.item;
                 this.item = tempItem;
-                trace("Picked up:",this.item.type);
                 targetItem.updateSprite();
             }
         }
@@ -201,6 +210,18 @@ class Player extends FlxSprite {
 
         //handling input
         if(!moving){
+            switch(looking){
+                case NORTH:
+                    animation.play("standN");
+                case SOUTH:
+                    animation.play("standS");
+                case EAST:
+                    animation.play("standE");
+                case WEST:
+                    animation.play("standW");
+                case NONE:
+                    animation.play("standN");
+            }
             if(FlxG.keys.justPressed.E){
                 useItem();
             }
@@ -232,6 +253,18 @@ class Player extends FlxSprite {
             x = FlxMath.lerp(oldPos.x*tileSize,newPos.x*tileSize,lerp);
             y = FlxMath.lerp(oldPos.y*tileSize,newPos.y*tileSize,lerp);
             lerp +=.1;
+            switch(looking){
+                case NORTH:
+                    animation.play("moveN");
+                case SOUTH:
+                    animation.play("moveS");
+                case EAST:
+                    animation.play("moveE");
+                case WEST:
+                    animation.play("moveW");
+                case NONE:
+                    animation.play("standN");
+            }
         }
         //stop lerping and reset movement
         if(lerp > 1){

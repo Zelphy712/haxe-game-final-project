@@ -15,29 +15,31 @@ class Lvl1 extends FlxState{
 	private var levelLoader:FlxOgmo3Loader;
     private var map:FlxTilemap;
     public var entities:FlxGroup;
+    public var exit:entities.tiles.Exit;
+    public var lvl:Int;
+    public var levels = [AssetPaths.testLevel__json,AssetPaths.lvl1__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json];
 
-    public override function new(door:Int){
+    public override function new(level:Int){
         super();
         entities = new FlxGroup();
-        
+        lvl = level;
         setUpLevel();
         
         add(player);
         add(map);
         
-        // var door = new Door(96,96,types.KeyColor.RED);
-        // entities.add(door);
-        // add(door);
-        // trace(entities.members);
-        // player.levelEntities = entities;
+        if (FlxG.sound.music == null) // don't restart the music if it's already playing
+        {
+            FlxG.sound.playMusic(AssetPaths.PuzzlingSpaces__wav, 1, true);
+        }
+        
         add(player.facingCollider);
     }
 
 
     private function setUpLevel():Void {
-		
         levelLoader = new FlxOgmo3Loader(AssetPaths.ogmo_final_project__ogmo, 
-            AssetPaths.testLevel__json);
+            levels[lvl]);
             
 		FlxG.worldBounds.setSize(
             levelLoader.getLevelValue("width"), levelLoader.getLevelValue("height"));
@@ -49,9 +51,10 @@ class Lvl1 extends FlxState{
     }
     
     private function placeEntities(entityData:EntityData):Void {
-        player = new Player(0,0,AssetPaths.testLevel__json);
-        // trace(entityData);
+        
+
 		if (entityData.name == "Player") {
+            player = new Player(0,0,levels[lvl]);
 			player.x = entityData.x - entityData.originX;// + Player.OFFSET_X;
             
             player.y = entityData.y - entityData.originY;// + Player.OFFSET_Y;
@@ -67,15 +70,36 @@ class Lvl1 extends FlxState{
             entities.add(new ItemBlock(entityData.x-entityData.originX,entityData.y-entityData.originY,new entities.items.Key(types.KeyColor.BLUE)));
         }else if(entityData.name == "greenKey"){
             entities.add(new ItemBlock(entityData.x-entityData.originX,entityData.y-entityData.originY,new entities.items.Key(types.KeyColor.GREEN)));
+        }else if(entityData.name == "exit"){
+            exit = new entities.tiles.Exit(entityData.x-entityData.originX,entityData.y-entityData.originY);
+            entities.add(exit);
         }
         add(entities);
-        player.levelEntities = entities;
+        if(player!= null){
+            player.levelEntities = entities;
+        }else{
+            trace("panic");
+        }
 	}
 
     public override function update(elapsed:Float){
         super.update(elapsed);
+        FlxG.overlap(player,exit,nextLevel);
+        if(FlxG.keys.justPressed.R){
+            FlxG.switchState(new levels.Lvl1(lvl));
+        }
         // FlxG.collide(player,map);
         // FlxG.collide(player,doors);
+    }
+
+    public function nextLevel(a,b):Void{
+        trace("Exiting Level");
+        trace(levels.length);
+        if(lvl == levels.length-1){
+            FlxG.switchState(new WinScreen());
+        }else{
+            FlxG.switchState(new levels.Lvl1(lvl+1));
+        }
     }
 
 }

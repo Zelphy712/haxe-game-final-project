@@ -8,8 +8,8 @@
   "directoryDepth": 5,
   "layerGridDefaultSize": {"x": 32, "y": 32},
   "levelDefaultSize": {"x": 320, "y": 240},
-  "levelMinSize": {"x": 128, "y": 128},
-  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelMinSize": {"x": 1280, "y": 960},
+  "levelMaxSize": {"x": 1280, "y": 460},
   "levelValues": [],
   "defaultExportMode": ".json",
   "compactExport": false,
@@ -54,7 +54,7 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#d800ffff",
+      "color": "#ffffffff",
       "tileX": false,
       "tileY": false,
       "tileSize": {"x": 32, "y": 32},
@@ -271,6 +271,42 @@
         ]
       },
       "color": "#00ff00ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 32, "y": 32},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    },
+    {
+      "exportID": "78283311",
+      "name": "exit",
+      "limit": -1,
+      "size": {"x": 32, "y": 32},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#d100ffff",
       "tileX": false,
       "tileY": false,
       "tileSize": {"x": 32, "y": 32},

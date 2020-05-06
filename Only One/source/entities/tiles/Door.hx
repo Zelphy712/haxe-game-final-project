@@ -28,8 +28,8 @@ class Door extends FlxSprite implements Tile{
     }
 
     public function open():Bool{
-        trace("OPENED!");
         this.blocking = false;
+        loadGraphic(AssetPaths.blank__png,false,32,32);
         return true;
     }
 

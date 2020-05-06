@@ -27,9 +27,13 @@ class ItemBlock extends FlxSprite implements entities.tiles.Tile{
                 }else{
                     loadGraphic(AssetPaths.blueKey__png,false,32,32);
                 }
+            case "Null":
+                trace("Null");
+                loadGraphic(AssetPaths.blank__png,false,32,32);
             default:
-                makeGraphic(32,32,FlxColor.BLUE);
-        }
+                trace("other");
+                loadGraphic(AssetPaths.blank__png,false,32,32);
+            }
     }
 
     public override function update(elapsed:Float){
@@ -47,8 +51,13 @@ class ItemBlock extends FlxSprite implements entities.tiles.Tile{
                 }else{
                     loadGraphic(AssetPaths.blueKey__png,false,32,32);
                 }
+            case "Null":
+                trace("Null");
+                loadGraphic(AssetPaths.blank__png,false,32,32);
             default:
-                makeGraphic(32,32,FlxColor.BLUE);
+                trace("other");
+                loadGraphic(AssetPaths.blank__png,false,32,32);
+            
         }
     }
 
