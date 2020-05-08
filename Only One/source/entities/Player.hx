@@ -228,13 +228,6 @@ class Player extends FlxSprite {
             if(FlxG.keys.justPressed.Q){
                 FlxG.overlap(facingCollider,levelEntities,pickupItem);
             }
-            //Testing color for locks
-            if(FlxG.keys.justPressed.R){
-                item = new entities.items.Key(types.KeyColor.RED);
-            }
-            if(FlxG.keys.justPressed.B){
-                item = new entities.items.Key(types.KeyColor.BLUE);
-            }
             moveDirection = getMovementInput();
             if(moveDirection != types.Direction.NONE){
                 if(moveDirection == looking){
@@ -247,6 +240,7 @@ class Player extends FlxSprite {
                     moving = false;
                 }
             }
+            FlxG.overlap(this,levelEntities,collapseFloors);
         }
         //lerping for positions
         if(moving){
@@ -265,6 +259,7 @@ class Player extends FlxSprite {
                 case NONE:
                     animation.play("standN");
             }
+            
         }
         //stop lerping and reset movement
         if(lerp > 1){
@@ -295,6 +290,18 @@ class Player extends FlxSprite {
         
 
         super.update(elapsed);
+    }
+
+    public function collapseFloors(player,entity):Void{
+        try{
+            var tile = cast(entity,entities.tiles.Tile);
+            if(tile.type == "Collapse"){
+                cast(tile,entities.tiles.CollapsingFloor).breakFloor();
+            }
+        }catch(e:Any){
+            
+        }
+        
     }
 
 

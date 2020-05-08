@@ -17,7 +17,7 @@ class Lvl1 extends FlxState{
     public var entities:FlxGroup;
     public var exit:entities.tiles.Exit;
     public var lvl:Int;
-    public var levels = [AssetPaths.testLevel__json,AssetPaths.lvl1__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json];
+    public var levels = [AssetPaths.testLevel__json,AssetPaths.lvl5__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json,AssetPaths.lvl5__json,AssetPaths.lvl6__json];
 
     public override function new(level:Int){
         super();
@@ -73,6 +73,8 @@ class Lvl1 extends FlxState{
         }else if(entityData.name == "exit"){
             exit = new entities.tiles.Exit(entityData.x-entityData.originX,entityData.y-entityData.originY);
             entities.add(exit);
+        }else if(entityData.name == "collapsingFloor"){
+            entities.add(new entities.tiles.CollapsingFloor(entityData.x-entityData.originX,entityData.y-entityData.originY));
         }
         add(entities);
         if(player!= null){
@@ -93,8 +95,6 @@ class Lvl1 extends FlxState{
     }
 
     public function nextLevel(a,b):Void{
-        trace("Exiting Level");
-        trace(levels.length);
         if(lvl == levels.length-1){
             FlxG.switchState(new WinScreen());
         }else{
