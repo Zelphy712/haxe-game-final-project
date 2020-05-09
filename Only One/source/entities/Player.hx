@@ -240,7 +240,7 @@ class Player extends FlxSprite {
                     moving = false;
                 }
             }
-            FlxG.overlap(this,levelEntities,collapseFloors);
+            
         }
         //lerping for positions
         if(moving){
@@ -259,7 +259,7 @@ class Player extends FlxSprite {
                 case NONE:
                     animation.play("standN");
             }
-            
+            FlxG.overlap(this,levelEntities,collapseFloors);
         }
         //stop lerping and reset movement
         if(lerp > 1){
@@ -288,7 +288,6 @@ class Player extends FlxSprite {
                 facingCollider.y = y;
         }
         
-
         super.update(elapsed);
     }
 
@@ -301,7 +300,6 @@ class Player extends FlxSprite {
         }catch(e:Any){
             
         }
-        
     }
 
 

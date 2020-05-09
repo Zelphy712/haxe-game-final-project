@@ -14,6 +14,7 @@ class Lvl1 extends FlxState{
     public var player:Player;
 	private var levelLoader:FlxOgmo3Loader;
     private var map:FlxTilemap;
+    public var background:FlxTilemap;
     public var entities:FlxGroup;
     public var exit:entities.tiles.Exit;
     public var lvl:Int;
@@ -25,12 +26,15 @@ class Lvl1 extends FlxState{
         lvl = level;
         setUpLevel();
         
-        add(player);
+        
+        add(background);
         add(map);
+        add(player);
+        add(entities);
         
         if (FlxG.sound.music == null) // don't restart the music if it's already playing
         {
-            FlxG.sound.playMusic(AssetPaths.PuzzlingSpaces__wav, 1, true);
+            // FlxG.sound.playMusic(AssetPaths.PuzzlingSpaces__wav, 1, true);
         }
         
         add(player.facingCollider);
@@ -44,8 +48,11 @@ class Lvl1 extends FlxState{
 		FlxG.worldBounds.setSize(
             levelLoader.getLevelValue("width"), levelLoader.getLevelValue("height"));
             
+        background = levelLoader.loadTilemap(AssetPaths.walls__png,"background");
+        background.setTileProperties(1,FlxObject.NONE);
 		map = levelLoader.loadTilemap(AssetPaths.walls__png, "Walls");
         map.setTileProperties(1, FlxObject.ANY);
+        
 
 		levelLoader.loadEntities(placeEntities, "Entities");
     }
@@ -76,11 +83,11 @@ class Lvl1 extends FlxState{
         }else if(entityData.name == "collapsingFloor"){
             entities.add(new entities.tiles.CollapsingFloor(entityData.x-entityData.originX,entityData.y-entityData.originY));
         }
-        add(entities);
+        // add(entities);
         if(player!= null){
             player.levelEntities = entities;
         }else{
-            trace("panic");
+            // trace("panic");
         }
 	}
 
