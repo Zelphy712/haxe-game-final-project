@@ -34,7 +34,7 @@ class Lvl1 extends FlxState{
         
         if (FlxG.sound.music == null) // don't restart the music if it's already playing
         {
-            // FlxG.sound.playMusic(AssetPaths.PuzzlingSpaces__wav, 1, true);
+            FlxG.sound.playMusic(AssetPaths.PuzzlingSpaces__wav, 1, true);
         }
         
         add(player.facingCollider);
