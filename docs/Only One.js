@@ -895,9 +895,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","17");
+		_this.setReserved("build","24");
 	} else {
-		_this.h["build"] = "17";
+		_this.h["build"] = "24";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4478,7 +4478,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy34:assets%2Fdata%2Fdata-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y25:assets%2Fdata%2Flvl1.jsonR2i5472R3R4R5R7R6tgoR0y25:assets%2Fdata%2Flvl2.jsonR2i5690R3R4R5R8R6tgoR0y25:assets%2Fdata%2Flvl3.jsonR2i5891R3R4R5R9R6tgoR0y25:assets%2Fdata%2Flvl4.jsonR2i6097R3R4R5R10R6tgoR0y39:assets%2Fdata%2Fogmo-final-project.ogmoR2i9549R3R4R5R11R6tgoR0y30:assets%2Fdata%2FtestLevel.jsonR2i6273R3R4R5R12R6tgoR0y27:assets%2Fimages%2Fblank.pngR2i157R3y5:IMAGER5R13R6tgoR0y30:assets%2Fimages%2FblueDoor.pngR2i387R3R14R5R15R6tgoR0y29:assets%2Fimages%2FblueKey.pngR2i243R3R14R5R16R6tgoR0y31:assets%2Fimages%2FgreenDoor.pngR2i387R3R14R5R17R6tgoR0y30:assets%2Fimages%2FgreenKey.pngR2i245R3R14R5R18R6tgoR0y29:assets%2Fimages%2FredDoor.pngR2i387R3R14R5R19R6tgoR0y28:assets%2Fimages%2FredKey.pngR2i239R3R14R5R20R6tgoR0y42:assets%2Fimages%2Ftilesets%2Fcharacter.pngR2i1222R3R14R5R21R6tgoR0y46:assets%2Fimages%2Ftilesets%2FexitTilesheet.pngR2i1018R3R14R5R22R6tgoR0y47:assets%2Fimages%2Ftilesets%2FslimeTilesheet.pngR2i5812R3R14R5R23R6tgoR0y38:assets%2Fimages%2Ftilesets%2Fwalls.pngR2i1030R3R14R5R24R6tgoR2i13935618R3y5:SOUNDR5y35:assets%2Fmusic%2FPuzzlingSpaces.wavy9:pathGroupaR26hR6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R28R6tgoR2i2114R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3R27aR30y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R29R5y28:flixel%2Fsounds%2Fflixel.mp3R27aR32y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i5794R3R25R5R31R27aR30R31hgoR2i33629R3R25R5R33R27aR32R33hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R34R35y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R14R5R40R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R14R5R41R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy25:assets%2Fdata%2Flvl1.jsony4:sizei9374y4:typey4:TEXTy2:idR1y7:preloadtgoR0y25:assets%2Fdata%2Flvl2.jsonR2i9592R3R4R5R7R6tgoR0y25:assets%2Fdata%2Flvl3.jsonR2i9933R3R4R5R8R6tgoR0y25:assets%2Fdata%2Flvl4.jsonR2i10309R3R4R5R9R6tgoR0y25:assets%2Fdata%2Flvl5.jsonR2i11550R3R4R5R10R6tgoR0y25:assets%2Fdata%2Flvl6.jsonR2i10541R3R4R5R11R6tgoR0y39:assets%2Fdata%2Fogmo-final-project.ogmoR2i10346R3R4R5R12R6tgoR0y30:assets%2Fdata%2FtestLevel.jsonR2i13639R3R4R5R13R6tgoR0y27:assets%2Fimages%2Fblank.pngR2i157R3y5:IMAGER5R14R6tgoR0y30:assets%2Fimages%2FblueDoor.pngR2i387R3R15R5R16R6tgoR0y29:assets%2Fimages%2FblueKey.pngR2i243R3R15R5R17R6tgoR0y34:assets%2Fimages%2FbrokenGrate1.pngR2i439R3R15R5R18R6tgoR0y34:assets%2Fimages%2FbrokenGrate2.pngR2i453R3R15R5R19R6tgoR0y27:assets%2Fimages%2Fgrate.pngR2i270R3R15R5R20R6tgoR0y31:assets%2Fimages%2FgreenDoor.pngR2i387R3R15R5R21R6tgoR0y30:assets%2Fimages%2FgreenKey.pngR2i245R3R15R5R22R6tgoR0y29:assets%2Fimages%2FredDoor.pngR2i387R3R15R5R23R6tgoR0y28:assets%2Fimages%2FredKey.pngR2i239R3R15R5R24R6tgoR0y32:assets%2Fimages%2FscreenShot.pngR2i25951R3R15R5R25R6tgoR0y42:assets%2Fimages%2Ftilesets%2Fcharacter.pngR2i1222R3R15R5R26R6tgoR0y46:assets%2Fimages%2Ftilesets%2FexitTilesheet.pngR2i1018R3R15R5R27R6tgoR0y47:assets%2Fimages%2Ftilesets%2FgrateTilesheet.pngR2i623R3R15R5R28R6tgoR0y47:assets%2Fimages%2Ftilesets%2FslimeTilesheet.pngR2i5812R3R15R5R29R6tgoR0y38:assets%2Fimages%2Ftilesets%2Fwalls.pngR2i418R3R15R5R30R6tgoR2i13935618R3y5:SOUNDR5y35:assets%2Fmusic%2FPuzzlingSpaces.wavy9:pathGroupaR32hR6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R34R6tgoR2i2114R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3R33aR36y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R35R5y28:flixel%2Fsounds%2Fflixel.mp3R33aR38y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i5794R3R31R5R37R33aR36R37hgoR2i33629R3R31R5R39R33aR38R39hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R40R41y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R15R5R46R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R15R5R47R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5571,7 +5571,6 @@ PlayState.prototype = $extend(flixel_FlxState.prototype,{
 		this.add(this.button);
 	}
 	,startGame: function() {
-		haxe_Log.trace("Started",{ fileName : "source/PlayState.hx", lineNumber : 20, className : "PlayState", methodName : "startGame"});
 		var nextState = new levels_Lvl1(0);
 		if(flixel_FlxG.game._state.switchTo(nextState)) {
 			flixel_FlxG.game._requestedState = nextState;
@@ -8775,6 +8774,7 @@ var entities_Player = function(x,y,mapName) {
 	if(x == null) {
 		x = 0;
 	}
+	this.canPickup = true;
 	this.tileSize = 32;
 	flixel_FlxSprite.call(this,x,y);
 	this.loadMap(mapName);
@@ -8816,6 +8816,7 @@ entities_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 	,item: null
 	,levelEntities: null
 	,facingCollider: null
+	,canPickup: null
 	,loadMap: function(mapName) {
 		this.file = lime_utils_Assets.getText(mapName);
 		this.mapJSON = JSON.parse(this.file);
@@ -9051,7 +9052,9 @@ entities_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 		var targetTile = js_Boot.__cast(ItemBlock , entities_tiles_Tile);
 		if(targetTile.type == "Item") {
 			var targetItem = js_Boot.__cast(ItemBlock , entities_tiles_ItemBlock);
-			if((targetItem.itemType != this.item.type || targetItem.itemType == "Key" || this.item.type == "Null") && targetItem.itemType != "Null") {
+			haxe_Log.trace("pickup item",{ fileName : "source/entities/Player.hx", lineNumber : 198, className : "entities.Player", methodName : "pickupItem"});
+			if((targetItem.itemType != this.item.type || targetItem.itemType == "Key" || this.item.type == "Null") && targetItem.itemType != "Null" && this.canPickup) {
+				this.canPickup = false;
 				var tempItem = targetItem.item;
 				targetItem.itemType = this.item.type;
 				targetItem.item = this.item;
@@ -9086,15 +9089,8 @@ entities_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 			}
 			var _this1 = flixel_FlxG.keys.justPressed;
 			if(_this1.keyManager.checkStatus(81,_this1.status)) {
+				haxe_Log.trace("Q",{ fileName : "source/entities/Player.hx", lineNumber : 230, className : "entities.Player", methodName : "update"});
 				flixel_FlxG.overlap(this.facingCollider,this.levelEntities,$bind(this,this.pickupItem));
-			}
-			var _this2 = flixel_FlxG.keys.justPressed;
-			if(_this2.keyManager.checkStatus(82,_this2.status)) {
-				this.item = new entities_items_Key(types_KeyColor.RED);
-			}
-			var _this3 = flixel_FlxG.keys.justPressed;
-			if(_this3.keyManager.checkStatus(66,_this3.status)) {
-				this.item = new entities_items_Key(types_KeyColor.BLUE);
 			}
 			this.moveDirection = this.getMovementInput();
 			if(this.moveDirection != types_Direction.NONE) {
@@ -9110,6 +9106,7 @@ entities_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 			}
 		}
 		if(this.moving) {
+			this.canPickup = true;
 			var a = this.oldPos.x * this.tileSize;
 			this.set_x(a + this.lerp * (this.newPos.x * this.tileSize - a));
 			var a1 = this.oldPos.y * this.tileSize;
@@ -9132,6 +9129,7 @@ entities_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 				this.animation.play("standN");
 				break;
 			}
+			flixel_FlxG.overlap(this,this.levelEntities,$bind(this,this.collapseFloors));
 		}
 		if(this.lerp > 1) {
 			this.moving = false;
@@ -9172,6 +9170,17 @@ entities_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 			break;
 		}
 		flixel_FlxSprite.prototype.update.call(this,elapsed);
+	}
+	,collapseFloors: function(player,entity) {
+		try {
+			var tile = js_Boot.__cast(entity , entities_tiles_Tile);
+			if(tile.type == "Collapse") {
+				(js_Boot.__cast(tile , entities_tiles_CollapsingFloor)).breakFloor();
+			}
+		} catch( e ) {
+			haxe_CallStack.lastException = e;
+			var e1 = ((e) instanceof js__$Boot_HaxeError) ? e.val : e;
+		}
 	}
 	,__class__: entities_Player
 });
@@ -9231,11 +9240,12 @@ entities_items_Key.prototype = {
 		return false;
 	}
 	,openDoor: function(key,door) {
-		haxe_Log.trace("Key:",{ fileName : "source/entities/items/Key.hx", lineNumber : 61, className : "entities.items.Key", methodName : "openDoor", customParams : [this]});
-		haxe_Log.trace("Door:",{ fileName : "source/entities/items/Key.hx", lineNumber : 62, className : "entities.items.Key", methodName : "openDoor", customParams : [js_Boot.__cast(door , entities_tiles_Door)]});
-		var door1 = js_Boot.__cast(door , entities_tiles_Door);
-		if(door1.colour == this.color) {
-			this.used = door1.open();
+		var tile = js_Boot.__cast(door , entities_tiles_Tile);
+		if(tile.type == "Door") {
+			var door1 = js_Boot.__cast(door , entities_tiles_Door);
+			if(door1.colour == this.color) {
+				this.used = door1.open();
+			}
 		}
 	}
 	,__class__: entities_items_Key
@@ -9264,6 +9274,34 @@ entities_tiles_Tile.prototype = {
 	,blocking: null
 	,__class__: entities_tiles_Tile
 };
+var entities_tiles_CollapsingFloor = function(x,y) {
+	this.type = "Collapse";
+	flixel_FlxSprite.call(this,x,y);
+	this.blocking = false;
+	this.makeGraphic(32,32,-16181);
+	this.loadGraphic("assets/images/tilesets/grateTilesheet.png",true,32,32);
+	this.animation.add("static",[0],0,false);
+	this.animation.add("sparking",[1,2],30,true);
+	this.animation.play("static");
+};
+$hxClasses["entities.tiles.CollapsingFloor"] = entities_tiles_CollapsingFloor;
+entities_tiles_CollapsingFloor.__name__ = "entities.tiles.CollapsingFloor";
+entities_tiles_CollapsingFloor.__interfaces__ = [entities_tiles_Tile];
+entities_tiles_CollapsingFloor.__super__ = flixel_FlxSprite;
+entities_tiles_CollapsingFloor.prototype = $extend(flixel_FlxSprite.prototype,{
+	type: null
+	,blocking: null
+	,update: function(elapsed) {
+		flixel_FlxSprite.prototype.update.call(this,elapsed);
+	}
+	,breakFloor: function() {
+		if(this.blocking == false) {
+			this.blocking = true;
+			this.animation.play("sparking");
+		}
+	}
+	,__class__: entities_tiles_CollapsingFloor
+});
 var entities_tiles_Door = function(x,y,color) {
 	this.type = "Door";
 	flixel_FlxSprite.call(this,x,y);
@@ -56778,13 +56816,15 @@ js_lib__$ArrayBuffer_ArrayBufferCompat.sliceImpl = function(begin,end) {
 	return resultArray.buffer;
 };
 var levels_Lvl1 = function(level) {
-	this.levels = ["assets/data/testLevel.json","assets/data/lvl1.json","assets/data/lvl2.json","assets/data/lvl3.json","assets/data/lvl4.json"];
+	this.levels = ["assets/data/lvl1.json","assets/data/lvl2.json","assets/data/lvl3.json","assets/data/lvl4.json","assets/data/lvl5.json","assets/data/lvl6.json"];
 	flixel_FlxState.call(this);
 	this.entities = new flixel_group_FlxTypedGroup();
 	this.lvl = level;
 	this.setUpLevel();
-	this.add(this.player);
+	this.add(this.background);
 	this.add(this.map);
+	this.add(this.entities);
+	this.add(this.player);
 	if(flixel_FlxG.sound.music == null) {
 		flixel_FlxG.sound.playMusic("assets/music/PuzzlingSpaces.wav",1,true);
 	}
@@ -56797,6 +56837,7 @@ levels_Lvl1.prototype = $extend(flixel_FlxState.prototype,{
 	player: null
 	,levelLoader: null
 	,map: null
+	,background: null
 	,entities: null
 	,exit: null
 	,lvl: null
@@ -56808,6 +56849,8 @@ levels_Lvl1.prototype = $extend(flixel_FlxState.prototype,{
 		var Height = this.levelLoader.getLevelValue("height");
 		_this.width = Width;
 		_this.height = Height;
+		this.background = this.levelLoader.loadTilemap("assets/images/tilesets/walls.png","background");
+		this.background.setTileProperties(1,0);
 		this.map = this.levelLoader.loadTilemap("assets/images/tilesets/walls.png","Walls");
 		this.map.setTileProperties(1,4369);
 		this.levelLoader.loadEntities($bind(this,this.placeEntities),"Entities");
@@ -56832,12 +56875,11 @@ levels_Lvl1.prototype = $extend(flixel_FlxState.prototype,{
 		} else if(entityData.name == "exit") {
 			this.exit = new entities_tiles_Exit(entityData.x - entityData.originX,entityData.y - entityData.originY);
 			this.entities.add(this.exit);
+		} else if(entityData.name == "collapsingFloor") {
+			this.entities.add(new entities_tiles_CollapsingFloor(entityData.x - entityData.originX,entityData.y - entityData.originY));
 		}
-		this.add(this.entities);
 		if(this.player != null) {
 			this.player.levelEntities = this.entities;
-		} else {
-			haxe_Log.trace("panic",{ fileName : "source/levels/Lvl1.hx", lineNumber : 81, className : "levels.Lvl1", methodName : "placeEntities"});
 		}
 	}
 	,update: function(elapsed) {
@@ -56852,8 +56894,6 @@ levels_Lvl1.prototype = $extend(flixel_FlxState.prototype,{
 		}
 	}
 	,nextLevel: function(a,b) {
-		haxe_Log.trace("Exiting Level",{ fileName : "source/levels/Lvl1.hx", lineNumber : 96, className : "levels.Lvl1", methodName : "nextLevel"});
-		haxe_Log.trace(this.levels.length,{ fileName : "source/levels/Lvl1.hx", lineNumber : 97, className : "levels.Lvl1", methodName : "nextLevel"});
 		if(this.lvl == this.levels.length - 1) {
 			var nextState = new levels_WinScreen();
 			if(flixel_FlxG.game._state.switchTo(nextState)) {
@@ -72462,7 +72502,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 945142;
+	this.version = 816883;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -118488,22 +118528,28 @@ openfl_display_DisplayObject.__tempStack = new lime_utils_ObjectPool(function() 
 },function(stack) {
 	stack.set_length(0);
 });
-AssetPaths.data_goes_here__txt = "assets/data/data-goes-here.txt";
 AssetPaths.lvl1__json = "assets/data/lvl1.json";
 AssetPaths.lvl2__json = "assets/data/lvl2.json";
 AssetPaths.lvl3__json = "assets/data/lvl3.json";
 AssetPaths.lvl4__json = "assets/data/lvl4.json";
+AssetPaths.lvl5__json = "assets/data/lvl5.json";
+AssetPaths.lvl6__json = "assets/data/lvl6.json";
 AssetPaths.ogmo_final_project__ogmo = "assets/data/ogmo-final-project.ogmo";
 AssetPaths.testLevel__json = "assets/data/testLevel.json";
 AssetPaths.blank__png = "assets/images/blank.png";
 AssetPaths.blueDoor__png = "assets/images/blueDoor.png";
 AssetPaths.blueKey__png = "assets/images/blueKey.png";
+AssetPaths.brokenGrate1__png = "assets/images/brokenGrate1.png";
+AssetPaths.brokenGrate2__png = "assets/images/brokenGrate2.png";
+AssetPaths.grate__png = "assets/images/grate.png";
 AssetPaths.greenDoor__png = "assets/images/greenDoor.png";
 AssetPaths.greenKey__png = "assets/images/greenKey.png";
 AssetPaths.redDoor__png = "assets/images/redDoor.png";
 AssetPaths.redKey__png = "assets/images/redKey.png";
+AssetPaths.screenShot__png = "assets/images/screenShot.png";
 AssetPaths.character__png = "assets/images/tilesets/character.png";
 AssetPaths.exitTilesheet__png = "assets/images/tilesets/exitTilesheet.png";
+AssetPaths.grateTilesheet__png = "assets/images/tilesets/grateTilesheet.png";
 AssetPaths.slimeTilesheet__png = "assets/images/tilesets/slimeTilesheet.png";
 AssetPaths.walls__png = "assets/images/tilesets/walls.png";
 AssetPaths.PuzzlingSpaces__wav = "assets/music/PuzzlingSpaces.wav";
