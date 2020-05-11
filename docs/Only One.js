@@ -895,9 +895,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","24");
+		_this.setReserved("build","32");
 	} else {
-		_this.h["build"] = "24";
+		_this.h["build"] = "32";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4478,7 +4478,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy25:assets%2Fdata%2Flvl1.jsony4:sizei9374y4:typey4:TEXTy2:idR1y7:preloadtgoR0y25:assets%2Fdata%2Flvl2.jsonR2i9592R3R4R5R7R6tgoR0y25:assets%2Fdata%2Flvl3.jsonR2i9933R3R4R5R8R6tgoR0y25:assets%2Fdata%2Flvl4.jsonR2i10309R3R4R5R9R6tgoR0y25:assets%2Fdata%2Flvl5.jsonR2i11550R3R4R5R10R6tgoR0y25:assets%2Fdata%2Flvl6.jsonR2i10541R3R4R5R11R6tgoR0y39:assets%2Fdata%2Fogmo-final-project.ogmoR2i10346R3R4R5R12R6tgoR0y30:assets%2Fdata%2FtestLevel.jsonR2i13639R3R4R5R13R6tgoR0y27:assets%2Fimages%2Fblank.pngR2i157R3y5:IMAGER5R14R6tgoR0y30:assets%2Fimages%2FblueDoor.pngR2i387R3R15R5R16R6tgoR0y29:assets%2Fimages%2FblueKey.pngR2i243R3R15R5R17R6tgoR0y34:assets%2Fimages%2FbrokenGrate1.pngR2i439R3R15R5R18R6tgoR0y34:assets%2Fimages%2FbrokenGrate2.pngR2i453R3R15R5R19R6tgoR0y27:assets%2Fimages%2Fgrate.pngR2i270R3R15R5R20R6tgoR0y31:assets%2Fimages%2FgreenDoor.pngR2i387R3R15R5R21R6tgoR0y30:assets%2Fimages%2FgreenKey.pngR2i245R3R15R5R22R6tgoR0y29:assets%2Fimages%2FredDoor.pngR2i387R3R15R5R23R6tgoR0y28:assets%2Fimages%2FredKey.pngR2i239R3R15R5R24R6tgoR0y32:assets%2Fimages%2FscreenShot.pngR2i25951R3R15R5R25R6tgoR0y42:assets%2Fimages%2Ftilesets%2Fcharacter.pngR2i1222R3R15R5R26R6tgoR0y46:assets%2Fimages%2Ftilesets%2FexitTilesheet.pngR2i1018R3R15R5R27R6tgoR0y47:assets%2Fimages%2Ftilesets%2FgrateTilesheet.pngR2i623R3R15R5R28R6tgoR0y47:assets%2Fimages%2Ftilesets%2FslimeTilesheet.pngR2i5812R3R15R5R29R6tgoR0y38:assets%2Fimages%2Ftilesets%2Fwalls.pngR2i418R3R15R5R30R6tgoR2i13935618R3y5:SOUNDR5y35:assets%2Fmusic%2FPuzzlingSpaces.wavy9:pathGroupaR32hR6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R34R6tgoR2i2114R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3R33aR36y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R35R5y28:flixel%2Fsounds%2Fflixel.mp3R33aR38y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i5794R3R31R5R37R33aR36R37hgoR2i33629R3R31R5R39R33aR38R39hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R40R41y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R15R5R46R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R15R5R47R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy25:assets%2Fdata%2Flvl1.jsony4:sizei9424y4:typey4:TEXTy2:idR1y7:preloadtgoR0y25:assets%2Fdata%2Flvl2.jsonR2i9644R3R4R5R7R6tgoR0y25:assets%2Fdata%2Flvl3.jsonR2i9988R3R4R5R8R6tgoR0y25:assets%2Fdata%2Flvl4.jsonR2i10368R3R4R5R9R6tgoR0y25:assets%2Fdata%2Flvl5.jsonR2i11621R3R4R5R10R6tgoR0y25:assets%2Fdata%2Flvl6.jsonR2i10605R3R4R5R11R6tgoR0y25:assets%2Fdata%2Flvl7.jsonR2i12272R3R4R5R12R6tgoR0y25:assets%2Fdata%2Flvl8.jsonR2i10894R3R4R5R13R6tgoR0y39:assets%2Fdata%2Fogmo-final-project.ogmoR2i10721R3R4R5R14R6tgoR0y30:assets%2Fdata%2FtestLevel.jsonR2i13727R3R4R5R15R6tgoR0y27:assets%2Fimages%2Fblank.pngR2i157R3y5:IMAGER5R16R6tgoR0y30:assets%2Fimages%2FblueDoor.pngR2i387R3R17R5R18R6tgoR0y29:assets%2Fimages%2FblueKey.pngR2i243R3R17R5R19R6tgoR0y34:assets%2Fimages%2FbrokenGrate1.pngR2i439R3R17R5R20R6tgoR0y34:assets%2Fimages%2FbrokenGrate2.pngR2i453R3R17R5R21R6tgoR0y27:assets%2Fimages%2Fgrate.pngR2i270R3R17R5R22R6tgoR0y31:assets%2Fimages%2FgreenDoor.pngR2i387R3R17R5R23R6tgoR0y30:assets%2Fimages%2FgreenKey.pngR2i245R3R17R5R24R6tgoR0y29:assets%2Fimages%2FredDoor.pngR2i387R3R17R5R25R6tgoR0y28:assets%2Fimages%2FredKey.pngR2i239R3R17R5R26R6tgoR0y42:assets%2Fimages%2Ftilesets%2Fcharacter.pngR2i1222R3R17R5R27R6tgoR0y46:assets%2Fimages%2Ftilesets%2FexitTilesheet.pngR2i1018R3R17R5R28R6tgoR0y47:assets%2Fimages%2Ftilesets%2FgrateTilesheet.pngR2i623R3R17R5R29R6tgoR0y47:assets%2Fimages%2Ftilesets%2FslimeTilesheet.pngR2i5812R3R17R5R30R6tgoR0y38:assets%2Fimages%2Ftilesets%2Fwalls.pngR2i418R3R17R5R31R6tgoR2i13935618R3y5:SOUNDR5y35:assets%2Fmusic%2FPuzzlingSpaces.wavy9:pathGroupaR33hR6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R35R6tgoR2i2114R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3R34aR37y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R36R5y28:flixel%2Fsounds%2Fflixel.mp3R34aR39y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i5794R3R32R5R38R34aR37R38hgoR2i33629R3R32R5R40R34aR39R40hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R41R42y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3R17R5R47R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R17R5R48R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -56816,7 +56816,7 @@ js_lib__$ArrayBuffer_ArrayBufferCompat.sliceImpl = function(begin,end) {
 	return resultArray.buffer;
 };
 var levels_Lvl1 = function(level) {
-	this.levels = ["assets/data/lvl1.json","assets/data/lvl2.json","assets/data/lvl3.json","assets/data/lvl4.json","assets/data/lvl5.json","assets/data/lvl6.json"];
+	this.levels = ["assets/data/lvl1.json","assets/data/lvl2.json","assets/data/lvl3.json","assets/data/lvl4.json","assets/data/lvl5.json","assets/data/lvl6.json","assets/data/lvl7.json","assets/data/lvl8.json"];
 	flixel_FlxState.call(this);
 	this.entities = new flixel_group_FlxTypedGroup();
 	this.lvl = level;
@@ -72502,7 +72502,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 816883;
+	this.version = 336626;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -118534,6 +118534,8 @@ AssetPaths.lvl3__json = "assets/data/lvl3.json";
 AssetPaths.lvl4__json = "assets/data/lvl4.json";
 AssetPaths.lvl5__json = "assets/data/lvl5.json";
 AssetPaths.lvl6__json = "assets/data/lvl6.json";
+AssetPaths.lvl7__json = "assets/data/lvl7.json";
+AssetPaths.lvl8__json = "assets/data/lvl8.json";
 AssetPaths.ogmo_final_project__ogmo = "assets/data/ogmo-final-project.ogmo";
 AssetPaths.testLevel__json = "assets/data/testLevel.json";
 AssetPaths.blank__png = "assets/images/blank.png";
@@ -118546,7 +118548,6 @@ AssetPaths.greenDoor__png = "assets/images/greenDoor.png";
 AssetPaths.greenKey__png = "assets/images/greenKey.png";
 AssetPaths.redDoor__png = "assets/images/redDoor.png";
 AssetPaths.redKey__png = "assets/images/redKey.png";
-AssetPaths.screenShot__png = "assets/images/screenShot.png";
 AssetPaths.character__png = "assets/images/tilesets/character.png";
 AssetPaths.exitTilesheet__png = "assets/images/tilesets/exitTilesheet.png";
 AssetPaths.grateTilesheet__png = "assets/images/tilesets/grateTilesheet.png";
