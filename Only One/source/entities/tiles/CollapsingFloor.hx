@@ -23,9 +23,7 @@ class CollapsingFloor extends FlxSprite implements Tile{
     }
 
     public function breakFloor():Void{
-        trace("colided");
         if(blocking == false){
-            trace("breaking floor");
             this.blocking = true;
             animation.play("sparking");
         }

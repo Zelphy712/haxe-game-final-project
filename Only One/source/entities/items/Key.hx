@@ -57,14 +57,17 @@ class Key implements Item {
     }
 
     public function openDoor(key,door):Void{
-        // trace("Key:",cast(key,entities.items.Key));
-        trace("Key:",this);
-        trace("Door:",cast(door,entities.tiles.Door));
+                
+        var tile = cast(door,entities.tiles.Tile);
 
-        var door = cast(door,entities.tiles.Door);
-        if(door.colour == color){
-            used = door.open();
+        if(tile.type == "Door"){
+            var door = cast(door,entities.tiles.Door);
+            if(door.colour == color){
+                used = door.open();
+            }
         }
+
+        
     }
 
 }

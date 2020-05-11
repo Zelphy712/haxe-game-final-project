@@ -15,7 +15,7 @@ class Player extends FlxSprite {
     //change movement so that you move only if you were already looking in the direction you wan to move, otherwise turn to face that way.
 
     //General use variables
-    public var tileSize:Int = 32; 
+    public var tileSize:Int = 32;
     var moveDirection:types.Direction;
     public var looking:types.Direction;
 
@@ -25,7 +25,7 @@ class Player extends FlxSprite {
     public var map:Array<Int>;
     public var mapSize:FlxVector;
     public var playerPos:FlxVector;
-    
+
     //Movement variables
     var moving:Bool;
     var lerp:Float;
@@ -37,6 +37,7 @@ class Player extends FlxSprite {
     var item:entities.items.Item;
     public var levelEntities:FlxGroup;
     public var facingCollider:FlxObject;
+    public var canPickup = true;
 
 
     public override function new(?x:Float=0, ?y:Float=0,?mapName:String=""){
@@ -175,17 +176,18 @@ class Player extends FlxSprite {
         if(item.type == "Null"){
             return false;
         }
-        if(item.consumable){
-            if(item.use(this)){
-                item = new entities.items.NullItem();
-                // trace(cast(item,entities.items.Item));
-                return true;
+            if(item.consumable){
+                if(item.use(this)){
+                    item = new entities.items.NullItem();
+                    // trace(cast(item,entities.items.Item));
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
-                return false;
+                return item.use(this);
             }
-        }else{
-            return item.use(this);
-        }
+            
         return false;
     }
 
@@ -193,7 +195,9 @@ class Player extends FlxSprite {
         var targetTile = cast(ItemBlock,entities.tiles.Tile);
         if(targetTile.type == "Item"){
             var targetItem = cast(ItemBlock,entities.tiles.ItemBlock);//This may all be a bit excessive but im in a very explicit mood
-            if((targetItem.itemType != this.item.type||targetItem.itemType == "Key"||this.item.type == "Null")&&targetItem.itemType != "Null"){
+            trace("pickup item");
+            if((targetItem.itemType != this.item.type||targetItem.itemType == "Key"||this.item.type == "Null")&&targetItem.itemType != "Null"&&canPickup){
+                canPickup = false;
                 var tempItem = targetItem.item;
                 targetItem.itemType = this.item.type;
                 targetItem.item = this.item;
@@ -201,13 +205,10 @@ class Player extends FlxSprite {
                 targetItem.updateSprite();
             }
         }
-        
     }
-
+    
     public override function update(elapsed:Float){
-
         this.entityBlocking = false;
-
         //handling input
         if(!moving){
             switch(looking){
@@ -226,7 +227,9 @@ class Player extends FlxSprite {
                 useItem();
             }
             if(FlxG.keys.justPressed.Q){
+                trace("Q");
                 FlxG.overlap(facingCollider,levelEntities,pickupItem);
+                
             }
             moveDirection = getMovementInput();
             if(moveDirection != types.Direction.NONE){
@@ -240,10 +243,10 @@ class Player extends FlxSprite {
                     moving = false;
                 }
             }
-            
         }
         //lerping for positions
         if(moving){
+            canPickup = true;
             x = FlxMath.lerp(oldPos.x*tileSize,newPos.x*tileSize,lerp);
             y = FlxMath.lerp(oldPos.y*tileSize,newPos.y*tileSize,lerp);
             lerp +=.1;
@@ -287,10 +290,8 @@ class Player extends FlxSprite {
                 facingCollider.x = x;
                 facingCollider.y = y;
         }
-        
         super.update(elapsed);
     }
-
     public function collapseFloors(player,entity):Void{
         try{
             var tile = cast(entity,entities.tiles.Tile);
@@ -298,9 +299,7 @@ class Player extends FlxSprite {
                 cast(tile,entities.tiles.CollapsingFloor).breakFloor();
             }
         }catch(e:Any){
-            
+
         }
     }
-
-
 }
