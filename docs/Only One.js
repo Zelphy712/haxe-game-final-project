@@ -895,9 +895,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","32");
+		_this.setReserved("build","38");
 	} else {
-		_this.h["build"] = "32";
+		_this.h["build"] = "38";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -56816,7 +56816,7 @@ js_lib__$ArrayBuffer_ArrayBufferCompat.sliceImpl = function(begin,end) {
 	return resultArray.buffer;
 };
 var levels_Lvl1 = function(level) {
-	this.levels = ["assets/data/lvl1.json","assets/data/lvl2.json","assets/data/lvl3.json","assets/data/lvl4.json","assets/data/lvl5.json","assets/data/lvl6.json","assets/data/lvl7.json","assets/data/lvl8.json"];
+	this.levels = ["assets/data/lvl1.json","assets/data/lvl2.json","assets/data/lvl3.json","assets/data/lvl4.json","assets/data/lvl5.json","assets/data/lvl6.json","assets/data/lvl7.json"];
 	flixel_FlxState.call(this);
 	this.entities = new flixel_group_FlxTypedGroup();
 	this.lvl = level;
@@ -72502,7 +72502,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 336626;
+	this.version = 398922;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";

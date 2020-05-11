@@ -18,7 +18,7 @@ class Lvl1 extends FlxState{
     public var entities:FlxGroup;
     public var exit:entities.tiles.Exit;
     public var lvl:Int;
-    public var levels = [AssetPaths.lvl1__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json,AssetPaths.lvl5__json,AssetPaths.lvl6__json,AssetPaths.lvl7__json,AssetPaths.lvl8__json];
+    public var levels = [AssetPaths.lvl1__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json,AssetPaths.lvl5__json,AssetPaths.lvl6__json,AssetPaths.lvl7__json];
 
     public override function new(level:Int){
         super();
