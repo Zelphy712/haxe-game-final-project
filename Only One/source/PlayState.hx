@@ -17,7 +17,6 @@ class PlayState extends FlxState
 	}
 
 	private function startGame(){
-		trace("Started");
 		FlxG.switchState(new levels.Lvl1(0));
 	}
 

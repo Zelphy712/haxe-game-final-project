@@ -14,10 +14,11 @@ class Lvl1 extends FlxState{
     public var player:Player;
 	private var levelLoader:FlxOgmo3Loader;
     private var map:FlxTilemap;
+    public var background:FlxTilemap;
     public var entities:FlxGroup;
     public var exit:entities.tiles.Exit;
     public var lvl:Int;
-    public var levels = [AssetPaths.testLevel__json,AssetPaths.lvl1__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json];
+    public var levels = [AssetPaths.lvl1__json,AssetPaths.lvl2__json,AssetPaths.lvl3__json,AssetPaths.lvl4__json,AssetPaths.lvl5__json,AssetPaths.lvl6__json,];
 
     public override function new(level:Int){
         super();
@@ -25,8 +26,11 @@ class Lvl1 extends FlxState{
         lvl = level;
         setUpLevel();
         
-        add(player);
+        
+        add(background);
         add(map);
+        add(entities);
+        add(player);
         
         if (FlxG.sound.music == null) // don't restart the music if it's already playing
         {
@@ -44,8 +48,11 @@ class Lvl1 extends FlxState{
 		FlxG.worldBounds.setSize(
             levelLoader.getLevelValue("width"), levelLoader.getLevelValue("height"));
             
+        background = levelLoader.loadTilemap(AssetPaths.walls__png,"background");
+        background.setTileProperties(1,FlxObject.NONE);
 		map = levelLoader.loadTilemap(AssetPaths.walls__png, "Walls");
         map.setTileProperties(1, FlxObject.ANY);
+        
 
 		levelLoader.loadEntities(placeEntities, "Entities");
     }
@@ -73,12 +80,14 @@ class Lvl1 extends FlxState{
         }else if(entityData.name == "exit"){
             exit = new entities.tiles.Exit(entityData.x-entityData.originX,entityData.y-entityData.originY);
             entities.add(exit);
+        }else if(entityData.name == "collapsingFloor"){
+            entities.add(new entities.tiles.CollapsingFloor(entityData.x-entityData.originX,entityData.y-entityData.originY));
         }
-        add(entities);
+        // add(entities);
         if(player!= null){
             player.levelEntities = entities;
         }else{
-            trace("panic");
+            // trace("panic");
         }
 	}
 
@@ -93,8 +102,6 @@ class Lvl1 extends FlxState{
     }
 
     public function nextLevel(a,b):Void{
-        trace("Exiting Level");
-        trace(levels.length);
         if(lvl == levels.length-1){
             FlxG.switchState(new WinScreen());
         }else{
